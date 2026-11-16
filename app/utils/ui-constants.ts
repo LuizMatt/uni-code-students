@@ -1,14 +1,24 @@
-import { mdiFileDocumentOutline, mdiFileDownloadOutline, mdiOpenInNew } from '@mdi/js'
-import type { BadgeableCompetencyLevel, CompetencyLevel, ResourceType } from './types'
+import {
+  mdiCodeBraces,
+  mdiFileDocumentOutline,
+  mdiFileDownloadOutline,
+  mdiOpenInNew,
+} from '@mdi/js'
+import type {
+  BadgeableCompetencyLevel,
+  CompetencyLevel,
+  QuestionDifficulty,
+  ResourceType,
+} from './types'
 
 export const BADGEABLE_LEVELS: readonly BadgeableCompetencyLevel[] = [
-  'basica',
-  'intermediaria',
-  'avancada',
+  'basic',
+  'intermediate',
+  'advanced',
 ] as const
 
 export function isBadgeableLevel(level: CompetencyLevel): level is BadgeableCompetencyLevel {
-  return level === 'basica' || level === 'intermediaria' || level === 'avancada'
+  return level === 'basic' || level === 'intermediate' || level === 'advanced'
 }
 
 export interface LevelBadgeMeta {
@@ -18,20 +28,20 @@ export interface LevelBadgeMeta {
 }
 
 export const LEVEL_BADGE_META: Record<BadgeableCompetencyLevel, LevelBadgeMeta> = {
-  basica: {
+  basic: {
     label: 'Básica',
-    containerClass: 'border-emerald-200 bg-emerald-50 text-emerald-800',
-    dotClass: 'bg-emerald-500',
+    containerClass: 'border-border-subtle bg-subtle text-ink',
+    dotClass: 'bg-cyan',
   },
-  intermediaria: {
+  intermediate: {
     label: 'Intermediária',
-    containerClass: 'border-sky-200 bg-sky-50 text-sky-800',
-    dotClass: 'bg-sky-500',
+    containerClass: 'border-border-subtle bg-sky text-ink',
+    dotClass: 'bg-brand',
   },
-  avancada: {
+  advanced: {
     label: 'Avançada',
-    containerClass: 'border-violet-200 bg-violet-50 text-violet-800',
-    dotClass: 'bg-violet-500',
+    containerClass: 'border-border-subtle bg-peri text-ink',
+    dotClass: 'bg-ink',
   },
 }
 
@@ -42,10 +52,10 @@ export interface ResourceTypeMeta {
 }
 
 export const RESOURCE_TYPE_META: Record<ResourceType, ResourceTypeMeta> = {
-  resumo: {
+  summary: {
     label: 'Resumo',
     iconPath: mdiFileDocumentOutline,
-    badgeClass: 'border-indigo-200 bg-indigo-50 text-indigo-700',
+    badgeClass: 'border-border-subtle bg-subtle text-ink',
   },
   link: {
     label: 'Link',
@@ -56,5 +66,30 @@ export const RESOURCE_TYPE_META: Record<ResourceType, ResourceTypeMeta> = {
     label: 'Material',
     iconPath: mdiFileDownloadOutline,
     badgeClass: 'border-border-subtle bg-surface text-ink-muted',
+  },
+  question: {
+    label: 'Questão',
+    iconPath: mdiCodeBraces,
+    badgeClass: 'border-border-subtle bg-sky text-ink',
+  },
+}
+
+export interface DifficultyBadgeMeta {
+  label: string
+  badgeClass: string
+}
+
+export const DIFFICULTY_BADGE_META: Record<QuestionDifficulty, DifficultyBadgeMeta> = {
+  easy: {
+    label: 'Fácil',
+    badgeClass: 'bg-sky text-ink',
+  },
+  medium: {
+    label: 'Médio',
+    badgeClass: 'bg-peri text-ink',
+  },
+  hard: {
+    label: 'Difícil',
+    badgeClass: 'bg-sun text-ink',
   },
 }

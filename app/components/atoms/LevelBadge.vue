@@ -13,7 +13,7 @@ const meta = computed(() => (isBadgeableLevel(props.level) ? LEVEL_BADGE_META[pr
 <template>
   <span
     v-if="meta"
-    class="inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-medium"
+    class="inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-semibold"
     :class="meta.containerClass"
   >
     <span class="h-1.5 w-1.5 rounded-full" :class="meta.dotClass" />

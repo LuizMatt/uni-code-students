@@ -1,37 +1,44 @@
-<script setup lang="ts">
-import { mdiBookOpenPageVariantOutline, mdiMagnify } from '@mdi/js'
-</script>
-
 <template>
-  <header class="sticky top-0 z-20 border-b border-border-subtle bg-surface/95 backdrop-blur-xs">
-    <div class="mx-auto flex h-14 max-w-5xl items-center justify-between px-4 sm:px-6">
-      <NuxtLink to="/" class="flex items-center gap-2.5 text-ink hover:opacity-90">
-        <span
-          class="inline-flex h-7 w-7 items-center justify-center rounded-md bg-brand font-mono text-xs font-bold text-white"
+  <header class="mx-auto w-full max-w-[1040px] px-6">
+    <nav
+      aria-label="Navegação principal"
+      class="flex flex-col items-start gap-3.5 py-[22px] sm:flex-row sm:items-center sm:gap-10"
+    >
+      <NuxtLink
+        to="/"
+        class="flex items-center gap-2.5 font-display text-[21px] font-bold tracking-[-0.02em] text-ink"
+      >
+        <i
+          aria-hidden="true"
+          class="grid h-7 w-7 place-items-center rounded-[8px_8px_8px_2px] bg-brand font-mono text-[13px] font-normal not-italic text-white"
         >
-          <AtomsBaseIcon :path="mdiBookOpenPageVariantOutline" :size="16" />
-        </span>
-        <div class="flex flex-col">
-          <span class="text-xs font-bold tracking-tight text-ink"> SI · UNIFACISA </span>
-          <span class="font-mono text-[10px] text-ink-faint"> Biblioteca de Competências </span>
-        </div>
+          &lt;/&gt;
+        </i>
+        UniCode Students
       </NuxtLink>
 
-      <nav
-        aria-label="Navegação principal"
-        class="flex items-center gap-4 text-xs font-medium text-ink-muted"
+      <div
+        class="flex w-full justify-between gap-3 text-[14px] font-medium sm:w-auto sm:justify-start sm:gap-7 sm:text-[15.5px]"
       >
-        <NuxtLink to="/competencies" class="transition hover:text-ink"> Competências </NuxtLink>
-        <NuxtLink to="/#about" class="transition hover:text-ink"> Sobre </NuxtLink>
         <NuxtLink
-          to="/search"
-          aria-label="Buscar"
-          class="inline-flex items-center gap-1.5 rounded-lg border border-border-subtle bg-subtle px-2.5 py-1 text-xs text-ink-muted transition hover:border-brand/40 hover:text-ink"
+          to="/#competencias"
+          class="border-b-2 border-transparent py-1 transition-colors duration-200 hover:border-brand"
         >
-          <AtomsBaseIcon :path="mdiMagnify" :size="14" />
-          <span class="hidden sm:inline">Buscar</span>
+          Competências
         </NuxtLink>
-      </nav>
-    </div>
+        <NuxtLink
+          to="/#questoes"
+          class="border-b-2 border-transparent py-1 transition-colors duration-200 hover:border-brand"
+        >
+          Questões
+        </NuxtLink>
+        <NuxtLink
+          to="/#sobre"
+          class="border-b-2 border-transparent py-1 transition-colors duration-200 hover:border-brand"
+        >
+          Sobre
+        </NuxtLink>
+      </div>
+    </nav>
   </header>
 </template>

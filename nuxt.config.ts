@@ -14,12 +14,12 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: { lang: 'pt-BR' },
-      title: 'Biblioteca de Conhecimento — SI UNIFACISA',
+      title: 'UniCode Students',
       meta: [
         {
           name: 'description',
           content:
-            'Biblioteca aberta e curada de conhecimento por competência para alunos de Sistemas de Informação da UNIFACISA.',
+            'Competências de Sistemas de Informação (UNIFACISA) com resumos, exemplos de código e questões do LeetCode resolvidas.',
         },
       ],
       link: [
@@ -31,7 +31,7 @@ export default defineNuxtConfig({
         },
         {
           rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap',
+          href: 'https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap',
         },
       ],
     },

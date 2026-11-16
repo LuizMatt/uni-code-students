@@ -1,101 +1,98 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { mdiInformationOutline, mdiShieldCheckOutline } from '@mdi/js'
-import type { FilterLevelOption } from '~/components/molecules/LevelFilter.vue'
-import type { CompetencySummary } from '~/utils/types'
-
-const searchQuery = ref('')
-const selectedLevel = ref<FilterLevelOption>('todas')
-
-const previewCompetencies: CompetencySummary[] = [
-  {
-    code: 'C1',
-    slug: 'c1',
-    name: 'Programar em linguagem estruturada',
-    level: 'basica',
-    disciplines: ['programacao-i'],
-    resourceCount: 0,
-  },
-  {
-    code: 'C9',
-    slug: 'c9',
-    name: 'Analisar modelos formais para criação de Banco de Dados Relacional',
-    level: 'intermediaria',
-    disciplines: ['banco-de-dados-i'],
-    resourceCount: 0,
-  },
-  {
-    code: 'C11',
-    slug: 'c11',
-    name: 'Criar Serviços Web com REST',
-    level: 'avancada',
-    disciplines: ['arquitetura-de-software'],
-    resourceCount: 0,
-  },
-]
+import { mdiArrowRight } from '@mdi/js'
+import { PREVIEW_COMPETENCIES, PREVIEW_QUESTIONS } from '~/utils/preview-data'
 </script>
 
 <template>
   <TemplatesAppShell>
-    <section class="mx-auto max-w-2xl text-center">
-      <p class="font-mono text-xs font-semibold tracking-wider text-brand uppercase">
-        Sistemas de Informação · UNIFACISA
-      </p>
-      <h1 class="mt-2 text-2xl font-bold tracking-tight text-ink sm:text-4xl">
-        Conhecimento organizado por competência
+    <header class="relative max-w-[640px] pt-[88px] pb-[104px]">
+      <h1
+        class="font-display text-[clamp(38px,5.6vw,64px)] leading-[1.03] font-bold tracking-[-0.03em] text-ink"
+      >
+        O conteúdo da sua matriz,
+        <span class="block text-brand">explicado e praticado.</span>
       </h1>
-      <p class="mt-3 text-sm leading-relaxed text-ink-muted">
-        Resumos, links oficiais e materiais de estudo mapeados diretamente para as competências da
-        matriz curricular.
+      <p class="mt-[22px] mb-8 max-w-[480px] text-[19px] text-ink-muted">
+        Competências de Sistemas de Informação com resumos, exemplos de código e questões do
+        LeetCode resolvidas.
       </p>
+      <a
+        href="#competencias"
+        class="inline-block rounded-full bg-ink px-[26px] py-[13px] text-base font-semibold text-white transition-colors duration-200 hover:bg-brand"
+      >
+        Ver competências
+      </a>
+    </header>
 
-      <div class="mt-6">
-        <MoleculesSearchBar v-model="searchQuery" />
+    <section
+      id="competencias"
+      aria-labelledby="skills-title"
+      class="grid grid-cols-1 items-start gap-y-10 pt-6 pb-[72px] md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] md:gap-x-[clamp(48px,8vw,112px)] md:pb-[104px]"
+    >
+      <div class="max-w-[520px] pt-1 md:max-w-[380px]">
+        <span
+          class="mb-[22px] inline-block text-xs font-semibold tracking-[0.1em] text-brand uppercase"
+        >
+          Matriz curricular
+        </span>
+        <h2
+          id="skills-title"
+          class="max-w-[12ch] font-display text-[clamp(40px,11vw,50px)] leading-none font-bold tracking-[-0.045em] text-ink md:max-w-[10ch] md:text-[clamp(42px,4.5vw,58px)]"
+        >
+          Do conceito à prática.
+        </h2>
+        <p class="mt-[22px] max-w-[36ch] text-base leading-[1.65] text-ink-muted md:text-[17px]">
+          Explore as competências de Sistemas de Informação com resumos, exemplos de código e
+          exercícios que conectam teoria e aplicação.
+        </p>
+        <a
+          href="#questoes"
+          class="group mt-[30px] inline-flex items-center gap-4 rounded-full bg-brand px-[22px] py-3.5 text-[15px] font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-ink"
+        >
+          <span>Praticar com questões</span>
+          <span class="transition-transform duration-200 group-hover:translate-x-1">
+            <AtomsBaseIcon :path="mdiArrowRight" :size="18" />
+          </span>
+        </a>
       </div>
-    </section>
 
-    <section class="mt-12 space-y-4">
-      <div class="flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
-        <h2 class="text-sm font-semibold tracking-tight text-ink">Competências em destaque</h2>
-        <MoleculesLevelFilter v-model="selectedLevel" />
-      </div>
-
-      <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+      <div class="border-t border-border-subtle">
         <MoleculesCompetencyCard
-          v-for="item in previewCompetencies"
+          v-for="item in PREVIEW_COMPETENCIES"
           :key="item.code"
           :competency="item"
         />
       </div>
     </section>
 
-    <section id="about" class="mt-16 scroll-mt-20 border-t border-border-subtle pt-12">
-      <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-        <div class="rounded-xl border border-border-subtle bg-surface p-6">
-          <div class="flex items-center gap-2 text-brand">
-            <AtomsBaseIcon :path="mdiInformationOutline" :size="18" />
-            <h2 class="text-sm font-semibold tracking-tight text-ink">Sobre o projeto</h2>
-          </div>
-          <p class="mt-3 text-xs leading-relaxed text-ink-muted">
-            Na UNIFACISA, o curso de Sistemas de Informação é organizado por competências (C1 a C33,
-            CI 1 a CI 4 e Estágio), e não por semestres. Esta biblioteca reúne resumos, referências
-            oficiais e materiais de apoio mapeados diretamente para cada competência da matriz.
-          </p>
-        </div>
+    <section id="questoes" class="pb-24">
+      <h2
+        class="font-display text-[clamp(28px,3.6vw,38px)] leading-[1.1] font-bold tracking-[-0.025em] text-ink"
+      >
+        Questões
+      </h2>
+      <p class="mt-2 text-ink-muted">LeetCode resolvido, com a ideia por trás do código.</p>
+      <div class="mt-7 border-t border-border-subtle">
+        <MoleculesResourceCard
+          v-for="q in PREVIEW_QUESTIONS"
+          :key="q.slug"
+          :resource="q"
+          :to="`/competencies/${q.competencies[0]?.toLowerCase() ?? 'c1'}`"
+        />
+      </div>
+    </section>
 
-        <div class="rounded-xl border border-border-subtle bg-surface p-6">
-          <div class="flex items-center gap-2 text-brand">
-            <AtomsBaseIcon :path="mdiShieldCheckOutline" :size="18" />
-            <h2 class="text-sm font-semibold tracking-tight text-ink">
-              Curadoria e política de conteúdo
-            </h2>
-          </div>
-          <p class="mt-3 text-xs leading-relaxed text-ink-muted">
-            Publicamos apenas conteúdo autoral, links para fontes oficiais ou abertas e materiais
-            com licença que permita redistribuição. Slides de professores, provas ou livros
-            protegidos por direitos autorais não são hospedados aqui.
-          </p>
-        </div>
+    <section id="sobre" class="pb-24">
+      <div class="grid gap-3 rounded-[20px] bg-ink p-7 text-white md:p-12">
+        <h2
+          class="font-display text-[clamp(28px,3.6vw,38px)] leading-[1.1] font-bold tracking-[-0.025em] text-white"
+        >
+          Sobre
+        </h2>
+        <p class="max-w-[520px] text-[#BCD0F0]">
+          Um projeto feito por alunos de Sistemas de Informação da UNIFACISA para reunir, num só
+          lugar, o que a gente estuda nas competências da matriz curricular.
+        </p>
       </div>
     </section>
   </TemplatesAppShell>

@@ -1,4 +1,5 @@
 import tailwindcss from '@tailwindcss/vite'
+import catalogPtBr from './app/locales/pt-BR/catalog.json'
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
@@ -7,6 +8,11 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   vite: {
     plugins: [tailwindcss()],
+  },
+  nitro: {
+    prerender: {
+      routes: catalogPtBr.competencies.map((c) => `/competencies/${c.slug}`),
+    },
   },
   typescript: {
     strict: true,

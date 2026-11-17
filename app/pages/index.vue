@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { mdiArrowRight } from '@mdi/js'
-import { PREVIEW_COMPETENCIES, PREVIEW_QUESTIONS } from '~/utils/preview-data'
+import { useContentLocale } from '~/composables/useContentLocale'
+
+const { competencies, questions } = useContentLocale()
 </script>
 
 <template>
@@ -58,7 +60,7 @@ import { PREVIEW_COMPETENCIES, PREVIEW_QUESTIONS } from '~/utils/preview-data'
 
       <div class="border-t border-border-subtle">
         <MoleculesCompetencyCard
-          v-for="item in PREVIEW_COMPETENCIES"
+          v-for="item in competencies"
           :key="item.code"
           :competency="item"
         />
@@ -74,7 +76,7 @@ import { PREVIEW_COMPETENCIES, PREVIEW_QUESTIONS } from '~/utils/preview-data'
       <p class="mt-2 text-ink-muted">LeetCode resolvido, com a ideia por trás do código.</p>
       <div class="mt-7 border-t border-border-subtle">
         <MoleculesResourceCard
-          v-for="q in PREVIEW_QUESTIONS"
+          v-for="q in questions"
           :key="q.slug"
           :resource="q"
           :to="`/competencies/${q.competencies[0]?.toLowerCase() ?? 'c1'}`"

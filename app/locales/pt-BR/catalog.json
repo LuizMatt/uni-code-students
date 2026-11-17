@@ -1,0 +1,120 @@
+{
+  "competencies": [
+    {
+      "code": "C1",
+      "slug": "c1",
+      "name": "Programar em linguagem estruturada",
+      "description": "Passo a passo lógico para resolver problemas em Python: de variáveis, condicionais e laços até listas e modularização com funções.",
+      "level": "basic",
+      "disciplines": ["Programação I"],
+      "available": true
+    },
+    {
+      "code": "C2",
+      "slug": "c2",
+      "name": "Programar em linguagem orientada a objetos básica",
+      "description": "Classes, objetos e os pilares que organizam programas maiores.",
+      "level": "basic",
+      "disciplines": ["Programação"],
+      "available": false
+    },
+    {
+      "code": "C8",
+      "slug": "c8",
+      "name": "Programar em linguagem orientada a objetos avançada",
+      "description": "Como organizar estruturas de dados e coleções para resolver problemas com eficiência.",
+      "level": "intermediate",
+      "disciplines": ["Programação"],
+      "available": false
+    },
+    {
+      "code": "C9",
+      "slug": "c9",
+      "name": "Analisar modelos formais para criação de Banco de Dados Relacional",
+      "description": "Modelagem, SQL e como guardar e consultar dados com segurança.",
+      "level": "intermediate",
+      "disciplines": ["Banco de Dados I"],
+      "available": false
+    },
+    {
+      "code": "C16",
+      "slug": "c16",
+      "name": "Projetar uma rede de comunicação de dados",
+      "description": "Como os dispositivos se comunicam, do cabo até a aplicação.",
+      "level": "intermediate",
+      "disciplines": ["Redes de computadores"],
+      "available": false
+    },
+    {
+      "code": "C17",
+      "slug": "c17",
+      "name": "Utilizar UML na modelagem de sistemas de informação",
+      "description": "Como planejar, construir e manter software em equipe.",
+      "level": "advanced",
+      "disciplines": ["Engenharia de Software"],
+      "available": false
+    }
+  ],
+  "questions": [
+    {
+      "slug": "binary-search",
+      "title": "Binary Search",
+      "type": "question",
+      "competencies": ["C1"],
+      "tags": ["binary-search", "array"],
+      "author": "UniCode Students",
+      "date": "2026-11-16",
+      "topic": "Laços e listas",
+      "difficulty": "easy",
+      "available": false
+    },
+    {
+      "slug": "fizz-buzz",
+      "title": "Fizz Buzz",
+      "type": "question",
+      "competencies": ["C1"],
+      "tags": ["math", "string"],
+      "author": "UniCode Students",
+      "date": "2026-11-16",
+      "topic": "Operadores e condicionais",
+      "difficulty": "easy",
+      "available": false
+    },
+    {
+      "slug": "two-sum",
+      "title": "Two Sum",
+      "type": "question",
+      "competencies": ["C8"],
+      "tags": ["hash-table", "array"],
+      "author": "UniCode Students",
+      "date": "2026-11-16",
+      "topic": "Tabela hash",
+      "difficulty": "easy",
+      "available": false
+    },
+    {
+      "slug": "lru-cache",
+      "title": "LRU Cache",
+      "type": "question",
+      "competencies": ["C2"],
+      "tags": ["design", "hash-table"],
+      "author": "UniCode Students",
+      "date": "2026-11-16",
+      "topic": "Encapsulamento e estruturas",
+      "difficulty": "medium",
+      "available": false
+    },
+    {
+      "slug": "combine-two-tables",
+      "title": "Combine Two Tables",
+      "type": "question",
+      "competencies": ["C9"],
+      "tags": ["sql", "join"],
+      "author": "UniCode Students",
+      "date": "2026-11-16",
+      "topic": "Junções (JOIN)",
+      "difficulty": "easy",
+      "available": false
+    }
+  ]
+}

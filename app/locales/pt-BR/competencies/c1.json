@@ -1,0 +1,184 @@
+{
+  "code": "C1",
+  "slug": "c1",
+  "topics": [
+    {
+      "slug": "variaveis-e-io",
+      "title": "Variáveis, tipos e entrada/saída",
+      "summary": "Em Python, variáveis são nomes associados a objetos na memória. A linguagem possui tipagem dinâmica (não exige declarar o tipo antes) e forte (não soma texto com número sem conversão explícita).",
+      "sections": [
+        {
+          "title": "Tipos primitivos essenciais",
+          "body": "Os quatro tipos básicos mais usados em algoritmos estruturados são int (inteiros como 42 ou -7), float (ponto flutuante como 8.5), str (textos entre aspas simples ou duplas) e bool (True ou False).",
+          "codeSnippet": "idade = 20           # int\nmedia = 8.75         # float\ncurso = 'SI'         # str\naprovado = True      # bool"
+        },
+        {
+          "title": "Leitura com input() e formatação com f-strings",
+          "body": "A função input() lê uma linha digitada pelo usuário e devolve sempre uma string (str). Para realizar cálculos, envolva a leitura com int() ou float(). Na saída, use f-strings para interpolar variáveis e controlar casas decimais com clareza."
+        }
+      ],
+      "examNote": "Cai em prova: input() sempre retorna str. Se o usuário digitar 10 e 5 e você fizer a + b sem int() ou float(), o Python fará concatenação ('105') em vez de soma (15).",
+      "codeSnippet": "nome = input('Aluno: ').strip()\nnota1 = float(input('Nota 1: '))\nnota2 = float(input('Nota 2: '))\n\nmedia = (nota1 + nota2) / 2\nprint(f'{nome} ficou com média {media:.2f}')",
+      "resources": [
+        {
+          "title": "Uma introdução informal ao Python (Tutorial Oficial)",
+          "type": "link",
+          "url": "https://docs.python.org/pt-br/3/tutorial/introduction.html",
+          "source": "Documentação Oficial Python (PSF)",
+          "description": "Guia oficial sobre números, textos, variáveis e primeiras expressões em Python 3."
+        },
+        {
+          "title": "Entrada e saída formatada (f-strings)",
+          "type": "link",
+          "url": "https://docs.python.org/pt-br/3/tutorial/inputoutput.html",
+          "source": "Documentação Oficial Python (PSF)",
+          "description": "Referência oficial de formatação de strings e leitura de dados."
+        }
+      ]
+    },
+    {
+      "slug": "operadores-e-expressoes",
+      "title": "Operadores e expressões",
+      "summary": "Expressões combinam valores, variáveis e operadores para produzir um novo resultado. Dominar a diferença entre as divisões do Python e a precedência lógica evita os erros mais comuns em provas e juízes online.",
+      "sections": [
+        {
+          "title": "Divisão real (/), divisão inteira (//) e resto (%)",
+          "body": "O operador / sempre resulta em float (mesmo quando a divisão é exata, como 4 / 2 == 2.0). Já // descarta a parte fracionária (piso da divisão) e % devolve o resto da divisão inteira — combinação clássica para separar dezenas, unidades, cédulas de caixa eletrônico ou converter segundos em horas e minutos."
+        },
+        {
+          "title": "Operadores relacionais e lógicos (and, or, not)",
+          "body": "Comparações (==, !=, <, <=, >, >=) produzem valores booleanos (True ou False). Para combinar condições, o Python usa palavras em inglês: and (ambas verdadeiras), or (pelo menos uma verdadeira) e not (inverte o valor lógico)."
+        }
+      ],
+      "examNote": "Cai em prova: diferenciar / (divisão real), // (quociente inteiro) e % (resto). Para testar se um número n é par, verificamos se n % 2 == 0; para extrair o último dígito de um inteiro positivo, usamos n % 10.",
+      "codeSnippet": "total_segundos = 3665\n\nhoras = total_segundos // 3600\nresto = total_segundos % 3600\nminutos = resto // 60\nsegundos = resto % 60\n\nprint(f'{horas:02d}:{minutos:02d}:{segundos:02d}')  # 01:01:05",
+      "resources": [
+        {
+          "title": "Tipos numéricos e operações aritméticas (int, float)",
+          "type": "link",
+          "url": "https://docs.python.org/pt-br/3/library/stdtypes.html#numeric-types-int-float-complex",
+          "source": "Documentação Oficial Python (PSF)",
+          "description": "Tabela completa de operadores aritméticos, divisão inteira, resto e potência."
+        },
+        {
+          "title": "Operações booleanas e comparações em Python",
+          "type": "link",
+          "url": "https://docs.python.org/pt-br/3/library/stdtypes.html#boolean-operations-and-or-not",
+          "source": "Documentação Oficial Python (PSF)",
+          "description": "Comportamento de curto-circuito dos operadores and, or e not e encadeamento de comparações."
+        }
+      ]
+    },
+    {
+      "slug": "estruturas-condicionais",
+      "title": "Estruturas condicionais",
+      "summary": "As estruturas if, elif e else permitem que o programa tome decisões e execute blocos diferentes de acordo com condições lógicas. Em Python, a indentação (4 espaços) define quais linhas pertencem a cada bloco.",
+      "sections": [
+        {
+          "title": "Cadeia if / elif / else vs. múltiplos if independentes",
+          "body": "Em uma cadeia if / elif / else, os caminhos são mutuamente exclusivos: assim que a primeira condição verdadeira é encontrada, seu bloco executa e todas as demais abaixo são ignoradas. Se você usar vários if separados, todas as condições serão testadas uma a uma."
+        },
+        {
+          "title": "Condições de guarda e validação de entrada",
+          "body": "Antes de aplicar a fórmula principal de um problema, valide se os dados de entrada fazem sentido (por exemplo, notas entre 0 e 10 ou saldo suficiente). Isso evita aninhamentos profundos e deixa o raciocínio linear."
+        }
+      ],
+      "examNote": "Cai em prova: a ordem dos testes no elif importa! Se você testar 'if nota >= 5.0' antes de 'elif nota >= 7.0', um aluno com nota 8.5 cairá no primeiro bloco e nunca chegará na condição de aprovado por média.",
+      "codeSnippet": "media = 7.4\nfrequencia = 82  # porcentagem\n\nif frequencia < 75:\n    situacao = 'Reprovado por falta'\nelif media >= 7.0:\n    situacao = 'Aprovado por média'\nelif media >= 4.0:\n    situacao = 'Prova final'\nelse:\n    situacao = 'Reprovado por nota'\n\nprint(situacao)",
+      "resources": [
+        {
+          "title": "Comandos de controle de fluxo: if, elif e else",
+          "type": "link",
+          "url": "https://docs.python.org/pt-br/3/tutorial/controlflow.html#if-statements",
+          "source": "Documentação Oficial Python (PSF)",
+          "description": "Explicação oficial sobre desvio condicional e blocos indentados."
+        }
+      ]
+    },
+    {
+      "slug": "lacos-de-repeticao",
+      "title": "Laços de repetição",
+      "summary": "Laços repetem um bloco de instruções enquanto uma condição é mantida ou para cada item de uma sequência. Escolher entre for e while depende de saber ou não, de antemão, quantas repetições serão feitas.",
+      "sections": [
+        {
+          "title": "Laço for com range(inicio, fim, passo)",
+          "body": "Use for quando a quantidade de repetições é conhecida ou quando estiver percorrendo uma coleção. A função range(n) gera inteiros de 0 até n - 1; range(a, b) vai de a até b - 1; e range(a, b, passo) permite avançar de 2 em 2 ou contar de trás para frente."
+        },
+        {
+          "title": "Laço while, contadores, acumuladores e sentinela",
+          "body": "Use while quando a repetição depende de um evento ou valor sentinela (como ler números até que o usuário digite 0). Um contador soma uma constante (+= 1) a cada volta, enquanto um acumulador soma valores variáveis (+= valor)."
+        }
+      ],
+      "examNote": "Cai em prova: no range(inicio, fim), o limite superior 'fim' NUNCA é incluído (range(1, 5) produz 1, 2, 3, 4). Já no while, esquecer de atualizar a variável da condição dentro do bloco causa loop infinito.",
+      "codeSnippet": "soma = 0.0\nquantidade = 0\n\n# Exemplo com lista simulando leituras até encontrar a sentinela -1\nleituras = [8.0, 6.5, 9.5, -1.0]\ni = 0\n\nwhile leituras[i] != -1.0:\n    soma += leituras[i]\n    quantidade += 1\n    i += 1\n\nif quantidade > 0:\n    print(f'Média das {quantidade} notas: {soma / quantidade:.2f}')",
+      "resources": [
+        {
+          "title": "Comandos for, função range(), break e continue",
+          "type": "link",
+          "url": "https://docs.python.org/pt-br/3/tutorial/controlflow.html#for-statements",
+          "source": "Documentação Oficial Python (PSF)",
+          "description": "Guia oficial sobre iteração com for, intervalos com range() e interrupção de laços."
+        }
+      ]
+    },
+    {
+      "slug": "listas-e-strings",
+      "title": "Listas e strings",
+      "summary": "Listas guardam sequências ordenadas e mutáveis de elementos, enquanto strings representam sequências imutáveis de caracteres. Ambas compartilham indexação baseada em zero, fatiamento (slicing) e iteração direta com for.",
+      "sections": [
+        {
+          "title": "Índices, fatiamento (slicing) e percorrimento",
+          "body": "O primeiro elemento fica no índice 0 e o último no índice len(seq) - 1 (ou simplesmente -1). Com seq[inicio:fim:passo] você extrai sub-regiões sem alterar a coleção original — e seq[::-1] gera uma cópia invertida."
+        },
+        {
+          "title": "Mutabilidade de listas vs. imutabilidade de strings",
+          "body": "Em uma lista, você pode substituir posições (notas[0] = 9.0), adicionar ao final com .append(x) ou remover com .pop(). Já uma string não pode ser alterada no lugar: métodos como .lower(), .strip() e .replace() sempre devolvem uma nova string."
+        }
+      ],
+      "examNote": "Cai em prova: fazer copia = lista_original NÃO duplica a lista na memória; ambas as variáveis apontam para a mesma lista. Para criar uma cópia independente, use lista_original.copy() ou lista_original[:].",
+      "codeSnippet": "notas = [7.5, 4.0, 9.0, 6.0, 8.5]\nmedia_turma = sum(notas) / len(notas)\n\nacima_da_media = []\nfor nota in notas:\n    if nota >= media_turma:\n        acima_da_media.append(nota)\n\nprint(f'Média: {media_turma:.1f} | Acima da média: {acima_da_media}')",
+      "resources": [
+        {
+          "title": "Estruturas de dados em Python: mais sobre listas",
+          "type": "link",
+          "url": "https://docs.python.org/pt-br/3/tutorial/datastructures.html#more-on-lists",
+          "source": "Documentação Oficial Python (PSF)",
+          "description": "Métodos de listas (append, extend, insert, remove, pop, sort) e compreensões de lista."
+        },
+        {
+          "title": "Métodos nativos de strings (str)",
+          "type": "link",
+          "url": "https://docs.python.org/pt-br/3/library/stdtypes.html#string-methods",
+          "source": "Documentação Oficial Python (PSF)",
+          "description": "Referência oficial de split, join, strip, lower, upper, find e replace."
+        }
+      ]
+    },
+    {
+      "slug": "funcoes-e-modularizacao",
+      "title": "Funções e modularização",
+      "summary": "Funções dividem um programa extenso em blocos pequenos, nomeados e reutilizáveis. Cada função deve ter uma responsabilidade clara: receber dados por parâmetros, processar e devolver o resultado com return.",
+      "sections": [
+        {
+          "title": "Diferença entre return e print",
+          "body": "print() apenas exibe um texto na tela como efeito colateral, mas não entrega valor nenhum para quem chamou a função. Já return encerra a execução da função imediatamente e devolve o valor calculado para que possa ser guardado em variável, testado ou usado em outra expressão."
+        },
+        {
+          "title": "Escopo local e parâmetros com valor padrão",
+          "body": "Variáveis criadas dentro de uma função existem apenas durante a execução dela (escopo local). Evite depender de variáveis globais mutáveis: passe tudo o que a função precisa como parâmetro."
+        }
+      ],
+      "examNote": "Cai em prova: toda função em Python que termina sem executar um return devolve implicitamente None. Se você fizer print() dentro da função em vez de return e tentar somar o retorno dela, terá TypeError com NoneType.",
+      "codeSnippet": "def calcular_media(notas: list[float]) -> float:\n    if not notas:\n        return 0.0\n    return sum(notas) / len(notas)\n\n\ndef classificar_aluno(media: float, minimo: float = 7.0) -> str:\n    return 'Aprovado' if media >= minimo else 'Em recuperação'\n\n\nmedia_final = calcular_media([8.0, 7.5, 9.0])\nprint(f'{media_final:.2f} -> {classificar_aluno(media_final)}')",
+      "resources": [
+        {
+          "title": "Definindo funções em Python (def, parâmetros e return)",
+          "type": "link",
+          "url": "https://docs.python.org/pt-br/3/tutorial/controlflow.html#defining-functions",
+          "source": "Documentação Oficial Python (PSF)",
+          "description": "Documentação oficial sobre criação de funções, escopo de variáveis e argumentos padrão."
+        }
+      ]
+    }
+  ]
+}
